@@ -1,0 +1,14 @@
+# Russian locale RUR prices formatter
+
+It's a simple Russian RUR price formatter.
+Example: input: {Number} 234345.45, output: {String} '234 345.45'
+
+### Usage
+
+''''js
+yourNumber.formatPrice();
+''''
+
+### Contacts
+
+<alexandr.deineko@gmail.com>

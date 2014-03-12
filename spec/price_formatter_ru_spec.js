@@ -34,7 +34,7 @@ describe("Russian locale price (RUR) formatter", function() {
   });
 
   /**
-   * TODO: Number can be negative.
+   * Number can be negative.
    */
   describe("when a negative number (-223456.07 or -22345.07) is passed in", function() {
     it("returns rounded string value '-223 456.07' and '-22 345.07'", function() {
