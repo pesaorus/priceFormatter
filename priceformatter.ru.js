@@ -12,7 +12,10 @@ if ( typeof Number.prototype.formatPrice !== 'function' ) {
      * rounded to 2 digits after dot.
      */
     Number.prototype.formatPrice = function() {
-        var priceString = this.toFixed(2).toString(),
+        'use strict';
+        var minus = this < 0 ? '-' : '',
+            /* Number to String and delete minus, if number is negative */
+            priceString = this.toFixed(2).toString().replace('-', ''),
             priceArray=[],
             splittedByDot = priceString.split('.'),
             afterDot = splittedByDot[1] === '00' ? '' : '.' + splittedByDot[1], /* remove '.00' */
@@ -22,7 +25,8 @@ if ( typeof Number.prototype.formatPrice !== 'function' ) {
             priceArray.push( beforeDot.slice(-3) );
             beforeDot = beforeDot.slice( 0, beforeDot.length - 3 );
         }
-        return priceArray.reverse().join(' ') + afterDot;
+
+        return minus + priceArray.reverse().join(' ') + afterDot;
     };
 
 }
