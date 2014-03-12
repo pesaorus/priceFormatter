@@ -13,15 +13,28 @@ if ( typeof Number.prototype.formatPrice !== 'function' ) {
      */
     Number.prototype.formatPrice = function() {
         'use strict';
-        var minus = this < 0 ? '-' : '',
-            /* Number to String and delete minus, if number is negative */
-            priceString = this.toFixed(2).toString().replace('-', ''),
-            priceArray=[],
-            splittedByDot = priceString.split('.'),
-            afterDot = splittedByDot[1] === '00' ? '' : '.' + splittedByDot[1], /* remove '.00' */
-            beforeDot = splittedByDot[0];
+        var minus,
+            priceString,
+            priceArray,
+            splittedByDot,
+            afterDot,
+            beforeDot;
 
-        for (var i = 0, l = beforeDot.length; i < l/3; i++) {
+        /* Save minus, if it is negative number */
+        minus = this < 0 ? '-' : '';
+
+        /* Number to String and delete minus, if number is negative */
+        priceString = this.toFixed(2).toString().replace('-', '');
+        
+        splittedByDot = priceString.split('.');
+
+        /* remove '.00' */
+        afterDot = splittedByDot[1] === '00' ? '' : '.' + splittedByDot[1];
+        
+        beforeDot = splittedByDot[0];
+        priceArray = [];
+
+        for (var i = 0, max = beforeDot.length; i < max/3; i++) {
             priceArray.push( beforeDot.slice(-3) );
             beforeDot = beforeDot.slice( 0, beforeDot.length - 3 );
         }
