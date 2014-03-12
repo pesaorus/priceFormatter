@@ -5,9 +5,9 @@ Example: input: {Number} 234345.45, output: {String} '234 345.45'
 
 ### Usage
 
-''''js
+```js
 yourNumber.formatPrice();
-''''
+```
 
 ### Contacts
 
